@@ -25,6 +25,6 @@ defmodule Issues.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{ :httpotion, github: "myfreeweb/httpotion" }]
+    [{ :httpotion, github: "myfreeweb/httpotion" }, {:jsex, "~>2.0.0"}]
   end
 end
