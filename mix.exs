@@ -12,7 +12,7 @@ defmodule Issues.Mixfile do
   #
   # Type `mix help compile.app` for more information
   def application do
-    [applications: [:logger]]
+    [applications: [ :httpotion, :logger ]]
   end
 
   # Dependencies can be Hex packages:
@@ -25,6 +25,6 @@ defmodule Issues.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:httpotion, "~> 0.2.4"}]
+    [{ :httpotion, github: "myfreeweb/httpotion" }]
   end
 end

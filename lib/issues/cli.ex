@@ -24,7 +24,7 @@ defmodule Issues.CLI do
                                      aliases:  [ h:    :help   ])
     case parse do
       { [ help: true ], _, _ } -> :help
-      { _, [ user, project, count ], _ } -> { user, project, binary_to_integer(count) }
+      { _, [ user, project, count ], _ } -> { user, project, count }
       { _, [ user, project ], _ } -> { user, project, @default_count }
       _ -> :help
     end

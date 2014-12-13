@@ -1,1 +1,2 @@
-%{"httpotion": {:hex, :httpotion, "0.2.4"}}
+%{"httpotion": {:git, "git://github.com/myfreeweb/httpotion.git", "6896eff1f013993437a5798af38efdd9b3f5d3eb", []},
+  "ibrowse": {:git, "git://github.com/cmullaparthi/ibrowse.git", "7871e2ebe8811efb64e1917e2de455fa87e8dfe3", [tag: "v4.1.0"]}}
