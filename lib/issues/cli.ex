@@ -45,5 +45,19 @@ defmodule Issues.CLI do
   """
   def process({user, project, count}) do
     Issues.GithubIssues.fetch(user, project)
+      |> decode_response
+      |> convert_to_list_of_hashdicts
+  end
+
+  defp decode_response({:ok, body}), do: Jsonex.decode(body)
+
+  defp decode_response({:error, body}) do
+    error = Jsonex.decode(msg)["message"]
+    IO.puts "Error fetching from Github: #{error}"
+    System.halt(2)
+  end
+
+  def convert_to_list_of_hashdicts(list) do
+    list |> Enum.map(&HashDict.new/1)
   end
 end
