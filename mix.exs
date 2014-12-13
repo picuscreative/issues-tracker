@@ -25,6 +25,6 @@ defmodule Issues.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    []
+    [{:httpotion, "~> 0.2.4"}]
   end
 end
