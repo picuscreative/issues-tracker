@@ -1,4 +1,8 @@
-Issues
+Github Issues Tracker
 ======
 
-** TODO: Add description **
+Track the issues of any github repository.
+
+```shell
+./issues elixir-lang elixir
+```
