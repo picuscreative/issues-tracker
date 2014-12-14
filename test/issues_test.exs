@@ -1,5 +1,5 @@
 defmodule IssuesTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   import Issues.CLI, only: [ parse_args: 1,
                              sort_into_ascending_order: 1,
