@@ -47,17 +47,22 @@ defmodule Issues.CLI do
     Issues.GithubIssues.fetch(user, project)
       |> decode_response
       |> convert_to_list_of_hashdicts
+      |> sort_into_ascending_order
+  end
+
+  def convert_to_list_of_hashdicts(list) do
+    for value <- list, do: (for {k,v} <- value, do: Map.put(%{}, String.to_atom(k), v) )
+  end
+
+  def sort_into_ascending_order(list_of_issues) do
+    Enum.sort list_of_issues
   end
 
   defp decode_response({:ok, body}), do: Jsonex.decode(body)
 
   defp decode_response({:error, body}) do
-    error = Jsonex.decode(msg)["message"]
+    error = Jsonex.decode(body)["message"]
     IO.puts "Error fetching from Github: #{error}"
     System.halt(2)
-  end
-
-  def convert_to_list_of_hashdicts(list) do
-    list |> Enum.map(&HashDict.new/1)
   end
 end
