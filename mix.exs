@@ -5,7 +5,12 @@ defmodule Issues.Mixfile do
     [app: :issues,
      version: "0.0.1",
      elixir: "~> 1.0",
+     escript: escript,
      deps: deps]
+  end
+
+  def escript do
+    [main_module: Issues.CLI]
   end
 
   # Configuration for the OTP application
@@ -25,6 +30,6 @@ defmodule Issues.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{ :httpotion, github: "myfreeweb/httpotion" }, {:jsex, "~>2.0.0"}]
+    [{ :httpotion, github: "myfreeweb/httpotion" }, {:json, "~>0.3.0"}]
   end
 end

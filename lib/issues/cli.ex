@@ -7,7 +7,7 @@ defmodule Issues.CLI do
   table of the last _n_ issues in a github project
   """
 
-  def run(argv) do
+  def main(argv) do
     argv
       |> parse_args
       |> process
@@ -59,10 +59,10 @@ defmodule Issues.CLI do
     Enum.sort list_of_issues
   end
 
-  defp decode_response({:ok, body}), do: Jsonex.decode(body)
+  defp decode_response({:ok, body}), do: JSON.decode(body)
 
   defp decode_response({:error, body}) do
-    error = Jsonex.decode(body)["message"]
+    error = JSON.decode(body)["message"]
     IO.puts "Error fetching from Github: #{error}"
     System.halt(2)
   end
