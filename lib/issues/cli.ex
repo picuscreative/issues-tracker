@@ -52,14 +52,19 @@ defmodule Issues.CLI do
   end
 
   def convert_to_list_of_hashdicts(list) do
-    for value <- list, do: (for {k,v} <- value, do: Map.put(%{}, String.to_atom(k), v) )
+    if List.first(list) do
+      for value <- list, do: (for {k,v} <- value, do: Map.put(%{}, String.to_atom(k), v) )
+    else
+      IO.puts "There is no issues for this project"
+      System.halt(2)
+    end
   end
 
   def sort_into_ascending_order(list_of_issues) do
     Enum.sort list_of_issues
   end
 
-  defp decode_response({:ok, body}), do: JSON.decode(body)
+  defp decode_response({:ok, body}), do: elem(JSON.decode(body),1)
 
   defp decode_response({:error, body}) do
     error = JSON.decode(body)["message"]
