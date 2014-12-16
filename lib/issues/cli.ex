@@ -49,6 +49,7 @@ defmodule Issues.CLI do
       |> convert_to_list_of_hashdicts
       |> sort_into_ascending_order
       |> Enum.take(count)
+      |> Issues.ResultsFormatter.format
   end
 
   def convert_to_list_of_hashdicts(list) do
